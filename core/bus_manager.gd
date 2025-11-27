@@ -7,3 +7,6 @@ func register_bus(bus_name:String, bus_ref:BaseEventBus):
 	
 func get_bus(bus_name:String) -> BaseEventBus:
 	return buses.get(bus_name)
+	
+func register_adapters():
+	pass

@@ -1,0 +1,39 @@
+{
+	"busses":[
+		"test_bus"
+	],
+	
+	"adapters": [
+		"sender_adapter",
+        "receiver_adapter"
+	],
+
+	"events": [
+		{
+			"from": "sender_adapter",
+			"input": { "type": "connect_to", "payload": "test_bus" },
+			"expect_emit": [
+				{ "type": "", "payload": "hello" }
+			]
+		},
+		{
+			"from": "sender_adapter",
+			"input": { "type": "send_message", "payload": "hello" },
+			"expect_emit": [
+				{ "type": "message_sent", "payload": "hello" }
+			]
+		},
+		{
+			"from": "receiver_adapter",
+			"input": { "type": "message_sent", "payload": "hello" },
+			"expect_emit": [
+				{ "type": "message_received", "payload": "hello" }
+			]
+		}
+	],
+
+	"final_expected_state": {
+		"sender_adapter": { "last_sent": "hello" },
+		"receiver_adapter": { "last_received": "hello" }
+	}
+}

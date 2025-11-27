@@ -1,16 +1,21 @@
+extends Node
 class_name BaseAdapter
-extends RefCounted
 
-var _busses: Array = []
+# --- Core Metadata ---
+var adapter_name : String = ""
+var adapter_category : String = "generic"
+var supported_events : Array = []
+var adapter_version : String = "1.0.0"
 
-func listen_to(bus: BaseEventBus):
-	_busses.append(bus)
-	bus.connect_listener(self,"_on_event")
+# --- Metadata Accessors ---
+func get_adapter_name() -> String:
+	return adapter_name
 
-func _on_event(event_name, payload):
-	handle_event(event_name, payload)
-	
+func get_category() -> String:
+	return adapter_category
 
-func handle_event(event_name:String, payload : Dictionary):
-	#Override this in child
-	pass
+func get_supported_events() -> Array:
+	return supported_events
+
+func get_version() -> String:
+	return adapter_version

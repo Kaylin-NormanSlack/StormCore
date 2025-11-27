@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 BusManager="*res://core/bus_manager.gd"
+GlobalAdapterRegistry="*res://core/adapter_registry.gd"
 
 [editor_plugins]
 
