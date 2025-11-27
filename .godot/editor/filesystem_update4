@@ -1,3 +1,8 @@
-res://core/adapter_registry.gd
+res://core/scenario_environment.gd
 res://addons/gut/gui/editor_globals.gd
 res://addons/gut/gui/EditorRadioButton.tres
+res://core/bus_manager.gd
+res://adapters/sender_adapter.gd
+res://core/base_adapter.gd
+res://adapters/receiver_adapter.gd
+res://core/adapter_registry.gd
