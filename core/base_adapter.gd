@@ -1,16 +1,21 @@
+# res://core/base_adapter.gd
+extends Node
 class_name BaseAdapter
-extends RefCounted
 
-var _busses: Array = []
+var bus: BaseEventBus
 
-func listen_to(bus: BaseEventBus):
-	_busses.append(bus)
-	bus.connect_listener(self,"_on_event")
+func get_adapter_name() -> String:
+	return "base_adapter"
 
-func _on_event(event_name, payload):
-	handle_event(event_name, payload)
-	
+func get_category() -> String:
+	return "generic"
 
-func handle_event(event_name:String, payload : Dictionary):
-	#Override this in child
+func get_supported_events() -> Array[String]:
+	return []
+
+func handle_event(event: Dictionary) -> void:
+	# Override in concrete adapters
 	pass
+
+func get_final_state() -> Dictionary:
+	return {}

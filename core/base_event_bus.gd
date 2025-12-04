@@ -1,10 +1,8 @@
+extends Node
 class_name BaseEventBus
-extends RefCounted
 
-signal event_emitted(name, payload)
+signal event_emitted(event: Dictionary)
 
-func emit_event(name: String, payload: Dictionary = {}):
-	emit_signal("event_emitted", name, payload)
-
-func connect_listener(target: Object, method: String):
-	connect("event_emitted",Callable(target,method))
+func emit_event(event: Dictionary) -> void:
+	# Single point for all events.
+	emit_signal("event_emitted", event)
