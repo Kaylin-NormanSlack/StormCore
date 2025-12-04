@@ -1,45 +1,33 @@
 {
-	"scenarios": [
+  "scenarios": [
+	{
+	  "name": "Happy Path: Send/Receive Message Loop",
+	  "events": [
 		{
-			"name": "happy_path_message_loop",
-
-			"events": [
-				{
-					"from": "sender_adapter",
-					"input": {
-						"type": "send_message",
-						"payload": "hello"
-					},
-					"expect_emit": [
-						{
-							"type": "message_sent",
-							"payload": "hello"
-						}
-					]
-				},
-				{
-					"from": "receiver_adapter",
-					"input": {
-						"type": "message_sent",
-						"payload": "hello"
-					},
-					"expect_emit": [
-						{
-							"type": "message_received",
-							"payload": "hello"
-						}
-					]
-				}
-			],
-
-			"final_expected_state": {
-				"sender_adapter": {
-					"last_sent": "hello"
-				},
-				"receiver_adapter": {
-					"last_received": "hello"
-				}
+		  "input": {
+			"type": "send_message",
+			"payload": "hello"
+		  },
+		  "expect_emit": [
+			{
+			  "type": "message_sent",
+			  "payload": "hello"
+			},
+			{
+			  "type": "message_received",
+			  "payload": "hello"
 			}
+		  ]
 		}
-	]
+	  ],
+	  "final_expected_state": {
+		"sender_adapter": {
+		  "last_sent": "hello"
+		},
+		"receiver_adapter": {
+		  "last_received": "hello"
+		}
+	  }
+	}
+  ]
 }

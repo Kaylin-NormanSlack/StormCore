@@ -1,29 +1,32 @@
+# res://core/bus_manager.gd
 extends Node
 class_name BusManager
 
 var bus: BaseEventBus
 
-func _init(b: BaseEventBus = null):
-	bus = b
+func attach_bus(p_bus: BaseEventBus) -> void:
+	bus = p_bus
+	if bus != null and not bus.event_emitted.is_connected(_on_bus_event):
+		bus.event_emitted.connect(_on_bus_event)
 
 
-func register_adapter(adapter: BaseAdapter) -> void:
-	# Inject the bus into each adapter so they can emit events.
-	adapter.bus = bus
+func _on_bus_event(event: Dictionary) -> void:
+	# Every event that hits the bus goes through here.
+	route_event(event)
 
 
 func route_event(event: Dictionary) -> void:
-	# Determine the event type.
 	var type: String = event.get("type", "")
 	if type == "":
 		push_warning("BusManager: Event missing 'type' field: %s" % str(event))
 		return
 
-	# Get all adapters that should receive this event.
+	# Ask registry who should receive this type.
 	var receivers: Array = GlobalAdapterRegistry.get_receivers_for_event(type)
 
 	for adapter in receivers:
-		if adapter.has_method("handle_event"):
-			adapter.handle_event(event)
+		var a: BaseAdapter = adapter
+		if a.has_method("handle_event"):
+			a.handle_event(event)
 		else:
-			push_warning("BusManager: Adapter '%s' has no handle_event()" % adapter.adapter_name)
+			push_warning("BusManager: Adapter '%s' has no handle_event()" % a.get_adapter_name())

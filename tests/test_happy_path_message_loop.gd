@@ -12,9 +12,11 @@ func before_each():
 	runner.environment = env
 
 
-func test_happy_path_message_loop():
-	var json_path = "res://tests/data/happy_path_message_loop.json"
+func test_happy_path_message_loop() -> void:
+	var env := ScenarioEnvironment.new()
+	env.build()                               # 🔥 REQUIRED
+	var runner := ScenarioRunner.new()
+	runner.environment = env
 
-	var passed = runner.run_scenario_from_file(json_path)
-
-	assert_true(passed, "Happy Path scenario should pass")
+	var ok := runner.run_scenario_from_file("res://tests/data/happy_path_message_loop.json")
+	assert_true(ok, "Happy Path scenario should pass")
