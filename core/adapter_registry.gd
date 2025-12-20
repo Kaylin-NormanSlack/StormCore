@@ -2,7 +2,7 @@
 extends Node
 class_name AdapterRegistry
 
-const DEFAULT_ADAPTER_FOLDER := "res://core/adapters/test_adapters"
+const DEFAULT_ADAPTER_FOLDER := "res://core/adapters/"
 
 @export_dir var adapter_folder: String = DEFAULT_ADAPTER_FOLDER
 

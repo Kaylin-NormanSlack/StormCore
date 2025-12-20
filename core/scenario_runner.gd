@@ -4,28 +4,6 @@ class_name ScenarioRunner
 
 var environment: ScenarioEnvironment
 
-
-func run_scenario_from_file(path: String) -> bool:
-	var scenario_data: Dictionary = _load_json(path)
-	if scenario_data.is_empty():
-		push_error("ScenarioRunner: Failed to load JSON at %s" % path)
-		return false
-
-	if not scenario_data.has("scenarios"):
-		push_error("ScenarioRunner: JSON missing 'scenarios' root key in %s" % path)
-		return false
-
-	var all_passed: bool = true
-
-	for s in scenario_data["scenarios"]:
-		var scenario_dict: Dictionary = s
-		var passed: bool = _run_single_scenario(scenario_dict)
-		if not passed:
-			all_passed = false
-
-	return all_passed
-
-
 func _run_single_scenario(scenario: Dictionary) -> bool:
 	environment.reset()
 
@@ -143,3 +121,23 @@ func _load_json(path: String) -> Dictionary:
 		return {}
 
 	return data
+	
+func run_scenario_from_file(path: String) -> bool:
+	var scenario_data: Dictionary = _load_json(path)
+	if scenario_data.is_empty():
+		return false
+	
+	# Check if it's a single scenario (has "name" and "events")
+	if scenario_data.has("name") and scenario_data.has("events"):
+		return _run_single_scenario(scenario_data)
+	
+	# Otherwise, assume it's the old format with "scenarios" array
+	if scenario_data.has("scenarios"):
+		# For backward compatibility, run first scenario only
+		# or implement a different method for multiple scenarios
+		var scenarios = scenario_data["scenarios"]
+		if scenarios.size() > 0:
+			return _run_single_scenario(scenarios[0])
+	
+	push_error("ScenarioRunner: Invalid scenario format in %s" % path)
+	return false

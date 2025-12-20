@@ -1,0 +1,23 @@
+{
+  "name": "Stress Test: 1000 Messages",
+  "description": "Tests system stability under load",
+  "setup": {
+	"preload_events": 1000
+  },
+  "events": [
+	{
+	  "input": {
+		"type": "batch_send",
+		"count": 1000,
+		"payload_template": "message_{index}"
+	  },
+	  "expect_emit": [
+		{
+		  "type": "performance_metrics",
+		  "messages_processed": 1000,
+		  "avg_processing_time_ms": "< 10"
+		}
+	  ]
+	}
+  ]
+}

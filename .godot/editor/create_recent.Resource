@@ -1,1 +1,2 @@
+AIQuickPromptResource
 JSON

@@ -55,7 +55,7 @@ func _initialize_adapters() -> void:
 
 
 func run_event(event_data: Dictionary) -> void:
-	# TOP-LEVEL INPUT → BUS, not manager.
+	clear_emitted_events()  # Clear BEFORE emitting
 	if bus != null:
 		bus.emit_event(event_data)
 
