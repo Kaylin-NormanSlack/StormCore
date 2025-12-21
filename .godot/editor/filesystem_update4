@@ -1,0 +1,6 @@
+res://game_init.gd
+res://addons/gut/gui/editor_globals.gd
+res://addons/gut/gui/EditorRadioButton.tres
+res://main.tscn
+res://example_usage.gd
+res://tests/test_quick_start.gd
