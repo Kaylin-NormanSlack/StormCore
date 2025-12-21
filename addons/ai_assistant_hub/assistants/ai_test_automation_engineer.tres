@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AIAssistantResource" load_steps=9 format=3 uid="uid://dp5du25y586yr"]
+
+[ext_resource type="Resource" uid="uid://dh02cksootrsy" path="res://addons/ai_assistant_hub/llm_providers/ollamaturbo.tres" id="1_hr3l3"]
+[ext_resource type="Script" uid="uid://l3dvihbbtpn6" path="res://addons/ai_assistant_hub/quick_prompts/ai_quick_prompt_resource.gd" id="2_hkucy"]
+[ext_resource type="Script" uid="uid://bp2g6bo4gxrvn" path="res://addons/ai_assistant_hub/assistants/ai_assistant_resource.gd" id="3_c7r6w"]
+[ext_resource type="Resource" uid="uid://puh3w7n7qrw8" path="res://addons/ai_assistant_hub/quick_prompts/ai_qp_code_it.tres" id="3_hg8cv"]
+[ext_resource type="Resource" uid="uid://ccufqgg7a7wrd" path="res://addons/ai_assistant_hub/quick_prompts/ai_qp_code_review.tres" id="4_8k00f"]
+[ext_resource type="Resource" uid="uid://dhdrn2fbrwwtf" path="res://addons/ai_assistant_hub/quick_prompts/ai_qp_debug.tres" id="5_wvugk"]
+[ext_resource type="Resource" uid="uid://bce3jpsofhdfh" path="res://addons/ai_assistant_hub/quick_prompts/ai_qp_describe.tres" id="6_5gaqi"]
+[ext_resource type="Resource" uid="uid://colu8ijdjh53h" path="res://addons/ai_assistant_hub/quick_prompts/ai_qp_read_code.tres" id="7_3y76a"]
+
+[resource]
+script = ExtResource("3_c7r6w")
+type_name = "Test Automation Engineer"
+ai_model = "deepseek-v3.2"
+llm_provider = ExtResource("1_hr3l3")
+ai_description = "You are a Test automation Engineer who knows the GUTS framework in addition to rogramming in GDScript. You are helping a developer create tests for a core system that is being created."
+quick_prompts = Array[ExtResource("2_hkucy")]([ExtResource("3_hg8cv"), ExtResource("4_8k00f"), ExtResource("5_wvugk"), ExtResource("6_5gaqi"), ExtResource("7_3y76a")])

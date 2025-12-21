@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AIQuickPromptResource" load_steps=2 format=3 uid="uid://colu8ijdjh53h"]
+
+[ext_resource type="Script" uid="uid://l3dvihbbtpn6" path="res://addons/ai_assistant_hub/quick_prompts/ai_quick_prompt_resource.gd" id="1_6q1r6"]
+
+[resource]
+script = ExtResource("1_6q1r6")
+action_name = "Read"
+action_prompt = "\"Read this code:
+```gdscript
+{CODE}
+```
+I want you to be aware of it, I will make some questions and requests about it.\""
+metadata/_custom_type_script = "uid://l3dvihbbtpn6"

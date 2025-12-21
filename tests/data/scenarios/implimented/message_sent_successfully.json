@@ -1,0 +1,29 @@
+{
+"meta": {
+	"id": "HP-001",
+	"author": "Kaylin Norman-Slack",
+	"created": "2025-12-18",
+	"tags": ["happy_path", "message_flow", "integration"],
+	"priority": "P0"
+  },
+  "name": "Happy Path: Message Sent Successfully",
+  "events": [
+	{
+	  "input": {
+		"type": "send_message",
+		"payload": "hello"
+	  },
+	  "expect_emit": [
+		{
+		  "type": "message_sent",
+		  "payload": "hello"
+		}
+	  ]
+	}
+  ],
+  "final_expected_state": {
+	"sender_adapter": {
+	  "last_sent": "hello"
+	}
+  }
+}

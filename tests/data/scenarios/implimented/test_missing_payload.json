@@ -1,0 +1,30 @@
+{
+"meta": {
+	"id": "HP-001",
+	"author": "Kaylin Norman-Slack",
+	"created": "2025-12-18",
+	"tags": ["error_handling", "integration"],
+	"priority": "P0"
+  },
+  "name": "Error Handling: Missing Payload",
+  "description": "Tests adapter behavior when payload is missing",
+  "events": [
+	{
+	  "input": {
+		"type": "send_message",
+	  },
+	  "expect_emit": [
+		{
+		  "type": "error_occurred",
+		  "error_code": "MISSING_PAYLOAD"
+		}
+	  ]
+	}
+  ],
+  "final_expected_state": {
+	"sender_adapter": {
+	  "last_sent": "",
+	  "error_count": 1
+	}
+  }
+}
