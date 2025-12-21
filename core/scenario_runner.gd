@@ -141,3 +141,11 @@ func run_scenario_from_file(path: String) -> bool:
 	
 	push_error("ScenarioRunner: Invalid scenario format in %s" % path)
 	return false
+	
+func test_scenarios_by_tag(tag: String):
+	# Run all scenarios with a specific tag
+	pass
+
+func test_scenarios_by_priority(level: String):
+	# Run P0 scenarios first, then P1, etc.
+	pass
