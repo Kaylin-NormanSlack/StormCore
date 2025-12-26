@@ -1,6 +1,8 @@
-res://game_init.gd
+res://main.tscn
 res://addons/gut/gui/editor_globals.gd
 res://addons/gut/gui/EditorRadioButton.tres
-res://main.tscn
-res://example_usage.gd
-res://tests/test_quick_start.gd
+res://core/input/input_poller.gd
+res://game_init.gd
+res://core/adapters/input_adapter.gd
+res://core/adapters/base_adapter.gd
+res://core/managers/bus_manager.gd
