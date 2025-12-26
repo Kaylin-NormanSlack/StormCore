@@ -16,12 +16,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalAdapterRegistry="*res://core/adapter_registry.gd"
-GlobalBusManager="*res://core/bus_manager.gd"
+GlobalAdapterRegistry="*res://core/regristry/adapter_registry.gd"
+GlobalBusManager="*res://core/managers/bus_manager.gd"
+InputPoller="*res://core/input/input_poller.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ai_assistant_hub/plugin.cfg", "res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 [plugins]
 
