@@ -53,12 +53,12 @@ This architecture is heavily influenced by real-world engineering practices, not
 StormCore is organized around **directional flow** and **strict separation of concerns**.
 Systems communicate through signals rather than direct dependencies.
 
-           ┌────────────┐
+┌────────────┐
             │   Input    │
             │ (Keyboard, │
             │  Mouse,    │
             │  Gamepad)  │
-            └─────┬─────┘
+            └─────┬──────┘
                   │
           ┌───────▼────────┐
           │    Adapters     │
