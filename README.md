@@ -48,6 +48,55 @@ This architecture is heavily influenced by real-world engineering practices, not
 
 ---
 
+## High-Level Architecture
+
+StormCore is organized around **directional flow** and **strict separation of concerns**.
+Systems communicate through signals rather than direct dependencies.
+
+           ┌────────────┐
+            │   Input    │
+            │ (Keyboard, │
+            │  Mouse,    │
+            │  Gamepad)  │
+            └─────┬─────┘
+                  │
+          ┌───────▼────────┐
+          │    Adapters     │
+          │ (Input, Camera,│
+          │  Audio, UI,    │
+          │  External APIs)│
+          └───────┬────────┘
+                  │
+          ┌───────▼────────┐
+          │  Signal Buses   │
+          │ (GameBus,       │
+          │  UIBus,         │
+          │  AudioBus, etc.)│
+          └───────┬────────┘
+                  │
+  ┌───────────────▼────────────────┐
+  │      Systems / Components       │
+  │ (Movement, Health, Rules,       │
+  │  State, Combat, Progression)    │
+  └───────────────┬────────────────┘
+                  │
+      ┌───────────▼───────────┐
+      │   Presentation Layer  │
+      │ (World, UI, Audio,    │
+      │  Animation, Feedback) │
+      └───────────────────────┘
+
+### Architectural Notes
+
+- Data and intent flow **downward**, not sideways
+- Systems react to signals instead of pulling state
+- Adapters isolate engine features and third-party tools
+- Presentation layers never own game rules
+
+This structure allows systems to be swapped, extended, or removed without cascading changes.
+
+---
+
 ## What This Repo Is (and Is Not)
 
 ### This repo **is**:
