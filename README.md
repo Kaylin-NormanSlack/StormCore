@@ -53,38 +53,35 @@ This architecture is heavily influenced by real-world engineering practices, not
 StormCore is organized around **directional flow** and **strict separation of concerns**.
 Systems communicate through signals rather than direct dependencies.
 
-┌────────────┐
-            │   Input    │
-            │ (Keyboard, │
-            │  Mouse,    │
-            │  Gamepad)  │
-            └─────┬──────┘
-                  │
-          ┌───────▼────────┐
-          │    Adapters     │
-          │ (Input, Camera,│
-          │  Audio, UI,    │
-          │  External APIs)│
-          └───────┬────────┘
-                  │
-          ┌───────▼────────┐
-          │  Signal Buses   │
-          │ (GameBus,       │
-          │  UIBus,         │
-          │  AudioBus, etc.)│
-          └───────┬────────┘
-                  │
-  ┌───────────────▼────────────────┐
-  │      Systems / Components       │
-  │ (Movement, Health, Rules,       │
-  │  State, Combat, Progression)    │
-  └───────────────┬────────────────┘
-                  │
-      ┌───────────▼───────────┐
-      │   Presentation Layer  │
-      │ (World, UI, Audio,    │
-      │  Animation, Feedback) │
-      └───────────────────────┘
+┌──────────┐
+            │  Input   │
+            │ (Keys,   │
+            │  Mouse,  │
+            │  Gamepad)│
+            └────┬─────┘
+                 │
+        ┌────────▼────────┐
+        │     Adapters     │
+        │ (Input, Camera, │
+        │  Audio, etc.)   │
+        └────────┬────────┘
+                 │
+        ┌────────▼────────┐
+        │   Signal Buses   │
+        │ (GameBus,       │
+        │  UIBus, etc.)   │
+        └────────┬────────┘
+                 │
+   ┌─────────────▼─────────────┐
+   │     Systems / Components  │
+   │ (Movement, Health, Logic, │
+   │  Rules, State)            │
+   └─────────────┬─────────────┘
+                 │
+      ┌──────────▼──────────┐
+      │  Presentation Layer │
+      │ (World, UI, Audio)  │
+      └─────────────────────┘
 
 ### Architectural Notes
 
