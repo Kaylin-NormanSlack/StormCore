@@ -53,35 +53,7 @@ This architecture is heavily influenced by real-world engineering practices, not
 StormCore is organized around **directional flow** and **strict separation of concerns**.
 Systems communicate through signals rather than direct dependencies.
 
-┌──────────┐
-            │  Input   │
-            │ (Keys,   │
-            │  Mouse,  │
-            │  Gamepad)│
-            └────┬─────┘
-                 │
-        ┌────────▼────────┐
-        │     Adapters     │
-        │ (Input, Camera, │
-        │  Audio, etc.)   │
-        └────────┬────────┘
-                 │
-        ┌────────▼────────┐
-        │   Signal Buses   │
-        │ (GameBus,       │
-        │  UIBus, etc.)   │
-        └────────┬────────┘
-                 │
-   ┌─────────────▼─────────────┐
-   │     Systems / Components  │
-   │ (Movement, Health, Logic, │
-   │  Rules, State)            │
-   └─────────────┬─────────────┘
-                 │
-      ┌──────────▼──────────┐
-      │  Presentation Layer │
-      │ (World, UI, Audio)  │
-      └─────────────────────┘
+![StormCore Architecture Diagram](stormcore-architecture.png)
 
 ### Architectural Notes
 
@@ -91,55 +63,3 @@ Systems communicate through signals rather than direct dependencies.
 - Presentation layers never own game rules
 
 This structure allows systems to be swapped, extended, or removed without cascading changes.
-
----
-
-## What This Repo Is (and Is Not)
-
-### This repo **is**:
-- A reference architecture
-- A foundation for my own games and prototypes
-- An evolving experiment in clean game system design
-
-### This repo **is not**:
-- A polished framework
-- A tutorial
-- A beginner template
-- A promise of long-term API stability
-
-Expect rough edges. Expect change.
-
----
-
-## Current State
-
-StormCore is actively evolving as it is used to build small games and demos.
-
-Some systems may be incomplete, refactored frequently, or intentionally abstract.  
-Stability is secondary to **learning, clarity, and iteration**.
-
----
-
-## Usage
-
-StormCore is primarily maintained for personal use.
-
-If you explore it:
-- Feel free to read and learn
-- Borrow ideas, not expectations
-- Treat it as a design reference rather than a dependency
-
----
-
-## License
-
-TBD — a license will be added once the structure stabilizes.
-
----
-
-## Closing Note
-
-StormCore represents how I think about games:  
-as **systems of intent**, not piles of behavior.
-
-If you’re curious about *why* something is structured the way it is, that’s where the real value lives.
