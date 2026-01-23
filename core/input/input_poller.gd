@@ -16,7 +16,6 @@ func _process(_delta):
 		print("[InputPoller] bus is null")
 		return
 
-		var prev: bool = _was_pressed.get(action, false)
 
 		if pressed == prev:
 			continue
