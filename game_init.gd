@@ -3,9 +3,11 @@ extends Node
 
 func _ready():
 	# 1. Register core buses
-	GlobalBusManager.register_bus("ui", BaseEventBus.new())
-	GlobalBusManager.register_bus("game", BaseEventBus.new())
-	GlobalBusManager.register_bus("audio", BaseEventBus.new())
+	GlobalBusManager.register_bus("UIBus", BaseEventBus.new())
+	GlobalBusManager.register_bus("GameBus", BaseEventBus.new())
+	GlobalBusManager.register_bus("AudioBus", BaseEventBus.new())
+	GlobalBusManager.register_bus("InputBus", BaseEventBus.new())
+
 	
 	# 2. Load game adapters (auto-discovered)
 	#GlobalAdapterRegistry.adapter_folder = "res://game/adapters/"
