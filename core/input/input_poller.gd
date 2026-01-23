@@ -2,6 +2,7 @@ extends Node
 
 @export var bus_name: String = "game"
 var bus: BaseEventBus = null
+@export var bus_name: String = "InputBus"
 
 var _was_pressed: Dictionary = {} # action -> bool
 
@@ -10,12 +11,11 @@ func initialize() -> void:
 	if GlobalBusManager.has_bus(bus_name):
 		bus = GlobalBusManager.get_bus(bus_name)
 
-func _process(_delta: float) -> void:
+func _process(_delta):
 	if bus == null:
+		print("[InputPoller] bus is null")
 		return
 
-	for action in InputMap.get_actions():
-		var pressed: bool = Input.is_action_pressed(action)
 		var prev: bool = _was_pressed.get(action, false)
 
 		if pressed == prev:
