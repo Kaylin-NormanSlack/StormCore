@@ -13,10 +13,9 @@ func build() -> void:
 
 	# 1. Create ONE bus instance
 	bus = BaseEventBus.new()
-
 	# 2. Create ONE manager instance and attach the SAME bus
-	manager = BusManager.new()
-	manager.attach_bus(bus)
+	GlobalBusManager.register_bus("TestBus",bus)
+	GlobalBusManager.attach_bus(bus)
 
 	# 3. Discover adapters
 	adapters = GlobalAdapterRegistry.get_all()

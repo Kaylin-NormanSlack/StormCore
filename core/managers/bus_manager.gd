@@ -2,16 +2,25 @@ extends Node
 class_name BusManager
 
 signal bus_registered(bus_name: String, bus: BaseEventBus)
+signal buses_ready
+signal stormcore_ready
+var _ready_emitted : bool = false
 
 var bus: BaseEventBus = null
 var _buses: Dictionary = {}
 
-func register_bus(name: String, bus: BaseEventBus) -> void:
-	if _buses.has(name):
+func _ready() -> void:
+	self.add_to_group("bus_manager")
+
+
+func register_bus(bus_name: String, bus: Node) -> void:
+	if _buses.has(bus_name):
+		push_warning("Bus already registered: %s" % bus_name)
 		return
-	_buses[name] = bus
-	bus.event_emitted.connect(_on_bus_event)
-	emit_signal("bus_registered", name, bus)
+
+	bus.name = bus_name
+	add_child(bus) # THIS is what makes it non-orphaned
+	_buses[bus_name] = bus
 
 func attach_bus(p_bus: BaseEventBus) -> void:
 	bus = p_bus
