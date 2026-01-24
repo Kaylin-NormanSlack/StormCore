@@ -4,6 +4,7 @@ var env: ScenarioEnvironment
 var runner: ScenarioRunner
 
 func before_each():
+	InputPoller.is_enabled = false
 	GlobalBusManager.reset()
 	GlobalAdapterRegistry.adapter_folder = "res://tests/test_adapters/"
 	GlobalAdapterRegistry.reload()
