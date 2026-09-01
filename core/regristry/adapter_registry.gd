@@ -77,11 +77,18 @@ func _discover_adapters() -> void:
 
 
 func _clear_state() -> void:
+
+	for adapter in _all_adapters:
+		if not is_instance_valid(adapter):
+			continue
+
+		if adapter.get_parent() == null:
+			adapter.free()
+
 	_adapters_by_name.clear()
 	_adapters_by_category.clear()
 	_adapters_by_event.clear()
 	_all_adapters.clear()
-
 
 func _try_register_script(script_path: String) -> void:
 	var script := load(script_path)

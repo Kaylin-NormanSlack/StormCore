@@ -27,7 +27,7 @@ func _run_single_scenario(scenario: Dictionary) -> bool:
 		print("[Scenario PASS] %s" % scenario_name)
 	else:
 		print("[Scenario FAIL] %s" % scenario_name)
-
+	
 	return scenario_passed
 
 
@@ -105,7 +105,6 @@ func _validate_final_state(expected_state: Dictionary) -> bool:
 					% [name_str, str(expected), str(actual)]
 				)
 				passed = false
-
 	return passed
 
 

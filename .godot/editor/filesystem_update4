@@ -1,8 +1,11 @@
 res://main.tscn
 res://addons/gut/gui/editor_globals.gd
 res://addons/gut/gui/EditorRadioButton.tres
-res://core/input/input_poller.gd
-res://game_init.gd
+res://tests/test_environment_files/scenario_environment.gd
+res://tests/test_environment_files/scenario_runner.gd
+res://tests/test_quick_start.gd
+res://tests/test_json_data_driven_tests.gd
+res://tests/test_attached_buses_to_manager.gd
 res://core/adapters/input_adapter.gd
-res://core/adapters/base_adapter.gd
-res://core/managers/bus_manager.gd
+res://core/regristry/adapter_registry.gd
+res://tests/data/scenarios/implimented/stress_test_1000_messages.json
