@@ -1,5 +1,8 @@
-res://core/input
-/home/kaylinnormanslack/source/repos/StormCore/tests/data/scenarios/happy_path/
-/home/kaylinnormanslack/source/repos/StormCore/tests/data/scenarios/error_handling/
-res://addons/ai_assistant_hub/quick_prompts/
-res://core
+res://scenes/menus/main_menu/
+res://scenes/loading_screen/
+res://
+res://addons/StormCore/core/regristry/
+res://addons/StormCore/core/managers/
+res://addons/StormCore/core/busses/
+res://addons/StormCore/core/input/
+res://addons/StormCore/

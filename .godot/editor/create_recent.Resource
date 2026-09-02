@@ -1,2 +1,0 @@
-AIQuickPromptResource
-JSON
