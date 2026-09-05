@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://e121054mh1lt"]
+
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="1_7pu3u"]
+[ext_resource type="Script" uid="uid://caeohygamjm82" path="res://scenes/game/scripts/game_timer.gd" id="2_053ow"]
+[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="3_dq0um"]
+[ext_resource type="PackedScene" uid="uid://d1sejd64c5ral" path="res://scenes/windows/pause_menu.tscn" id="4_y7efp"]
+[ext_resource type="Script" uid="uid://bbymrin0cm704" path="res://addons/maaacks_game_template/extras/scripts/level_loader.gd" id="5_va0b8"]
+[ext_resource type="Script" uid="uid://b6e76ah2esd4m" path="res://src/level_and_state_manager.gd" id="6_oif1y"]
+[ext_resource type="PackedScene" uid="uid://we7q2w3kai4m" path="res://scenes/windows/game_won_window.tscn" id="7_q4l8g"]
+[ext_resource type="PackedScene" uid="uid://dyfiiiqcemn3t" path="res://scenes/windows/level_lost_window.tscn" id="8_twh4k"]
+[ext_resource type="PackedScene" uid="uid://drl0tdddi42rt" path="res://scenes/windows/level_won_window.tscn" id="9_eafpv"]
+[ext_resource type="Script" uid="uid://wjq7li836lwj" path="res://addons/maaacks_game_template/extras/scripts/scene_lister.gd" id="10_g87g4"]
+[ext_resource type="PackedScene" uid="uid://bxqvml7klhdd1" path="res://scenes/loading_screen/level_loading_screen.tscn" id="11_ec7kq"]
+
+[node name="Game" type="Node" unique_id=1262092417]
+
+[node name="BackgroundMusicPlayer" parent="." unique_id=986713811 instance=ExtResource("1_7pu3u")]
+
+[node name="GameTimer" type="Node" parent="." unique_id=116840261]
+script = ExtResource("2_053ow")
+
+[node name="PauseMenuController" type="Node" parent="." unique_id=1685173287]
+script = ExtResource("3_dq0um")
+pause_menu_packed = ExtResource("4_y7efp")
+
+[node name="LevelLoader" type="Node" parent="." unique_id=1364778615 node_paths=PackedStringArray("level_container", "level_loading_screen")]
+script = ExtResource("5_va0b8")
+level_container = NodePath("../LevelContainer")
+level_loading_screen = NodePath("../LevelLoadingScreen")
+
+[node name="LevelManager" type="Node" parent="." unique_id=1350972375 node_paths=PackedStringArray("level_loader", "scene_lister")]
+script = ExtResource("6_oif1y")
+level_loader = NodePath("../LevelLoader")
+starting_level_path = "res://template_sample_assets/scenes/game/levels/level_1.tscn"
+scene_lister = NodePath("SceneLister")
+game_won_scene = ExtResource("7_q4l8g")
+level_lost_scene = ExtResource("8_twh4k")
+level_won_scene = ExtResource("9_eafpv")
+
+[node name="SceneLister" type="Node" parent="LevelManager" unique_id=673614733]
+script = ExtResource("10_g87g4")
+files = Array[String](["res://template_sample_assets/scenes/game/levels/level_1.tscn", "res://template_sample_assets/scenes/game/levels/level_2.tscn", "res://template_sample_assets/scenes/game/levels/level_3.tscn"])
+directory = "res://template_sample_assets/scenes/game/levels"
+
+[node name="LevelContainer" type="Node" parent="." unique_id=437554331]
+
+[node name="LevelLoadingScreen" parent="." unique_id=816430938 instance=ExtResource("11_ec7kq")]
+visible = false
