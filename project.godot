@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
-config/name="Invasive Thoughts"
+config/name="Storm-Engine-Core"
 run/main_scene="uid://b4g0y6pb0u7af"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
@@ -21,9 +25,9 @@ buses/default_bus_layout="uid://bay3t8bdv1pfl"
 
 [autoload]
 
-InputPoller="*uid://c8gphrxwi4720"
-GlobalBusManager="*uid://wmy0iivkcyr1"
-GlobalAdapterRegistry="*uid://bybki3xdxo8en"
+InputPoller="*res://core/input/input_poller.gd"
+GlobalBusManager="*res://core/managers/bus_manager.gd"
+GlobalAdapterRegistry="*res://core/regristry/adapter_registry.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 SceneLoader="*uid://cbwmrnp0af35y"
 ProjectMusicController="*uid://r5t485lr3p7t"
@@ -40,7 +44,7 @@ project/assembly_name="Invasive Thoughts"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 [gui]
 
@@ -99,6 +103,15 @@ plugins={
 "res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
 }
 
+[plugins]
+
+ai_assistant_hub/llm_api="ollamaturbo_api"
+ai_assistant_hub/preferences/thinking_target=0
+ai_assistant_hub/preferences/skip_greeting=false
+ai_assistant_hub/preferences/always_scroll_to_bottom=false
+
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
